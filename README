@@ -1,0 +1,11 @@
+python --version
+pip install virtualenv
+python -m venv env
+pip install -r requirements.txt
+source env/Scripts/activate
+python
+from app import db
+db.create_all()
+exit()
+Run app.py file
+
