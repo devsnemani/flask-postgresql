@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Student Master</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Update Student Details</h1>
+
+    <div class="form">
+        <form action="/update/{{student.id}}" method="POST">
+            <label for="id">Student ID: </label> <input type="text" id="id" name="id" value="{{student.id}}"><br><br>
+            <label for="fname">First name: </label> <input type="text" id="fname" name="fname" value="{{student.fname}}"><br><br>
+            <label for="lname">Last name: </label> <input type="text" id="lname" name="lname" value="{{student.lname}}"><br><br>
+            <label for="score">SAT Score: </label> <input type="text" id="score" name="score" value="{{student.score}}"><br><br>
+            <input type="submit" value="Update">
+        </form>
+    </div>
+</div>
+{% endblock %}

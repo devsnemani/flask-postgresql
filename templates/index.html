@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Task Master</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    {% if students|length < 1 %}
+        <h4 style="text-align: center">There are no tasks. Create one below!</h4>
+    {% else %}
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Score</th>
+            <th>Created Date</th>
+            <th>Actions</th>
+        </tr>
+        {% for student in students %}
+            <tr>
+                <td width="10%">{{ student.id }}</td>
+                <td width="20%">{{ student.fname }}</td>
+                <td width="20%">{{ student.lname }}</td>
+                <td width="10%">{{ student.score }}</td>
+                <td width="20%">{{ student.date_created.date() }}</td>
+                <td width="20%">
+                    <a href="/delete/{{student.id}}">Delete</a>
+                    &nbsp;
+                    <a href="/update/{{student.id}}">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    <table>
+        <tr>
+            <div class="form">
+                <form action="/" method="POST">
+                    <label for="fname">First name: </label> <input type="text" id="fname" name="fname"><br><br>
+                    <label for="lname">Last name: </label> <input type="text" id="lname" name="lname"><br><br>
+                    <label for="score">SAT Score: </label> <input type="text" id="score" name="score"><br><br>
+                    <button><a>Save</a></button>
+                    <br>
+                </form>
+            </div>
+        </tr>
+    </table>
+</div>
+{% endblock %}
